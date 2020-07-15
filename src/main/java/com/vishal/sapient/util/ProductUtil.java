@@ -7,15 +7,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProductUtil {
-    private Object String;
-    private Object Product;
 
     public String findNthHighestPrice (Map<String, Product> cache, int n, boolean v){
 
         Map.Entry<String, Product> entry =
                 cache.entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue())
+                .sorted(Map.Entry.comparingByValue(Comparator.comparing(Product::getPrice).reversed()))
                 .collect(Collectors.toList())
                 .get(n);
 
